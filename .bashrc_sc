@@ -1,0 +1,12 @@
+TTYNAME=`tty|cut -b 6-`
+PS1='[\u@\h \W] ($TTYNAME) \$ '
+if [ -e "/usr/bin/vim" ]; then
+    EDITOR=/usr/bin/vim
+    else
+        if [ -e "/usr/bin/vi" ]; then
+            EDITOR=/usr/bin/vim
+            else
+                EDITOR=/usr/bin/nano
+        fi
+fi
+source ~/.bash_alias_sc

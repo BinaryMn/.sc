@@ -1,0 +1,51 @@
+########################################################
+# file: .screenrc_sc
+# author: Chris Olin - http://chrisolin.com
+# purpose: .screenrc for portable profile
+# created date: 10-07-2012
+# last modified: Thu 23 May 2013 01:21:45 PM EDT
+# license:
+# vim:smd:ar:si:et:bg=dark:ts=4:sw=4:syntax=screen
+########################################################
+
+
+shell $HOME/.bashrc_sc.sh
+defscrollback 9999
+screen -t bash1
+altscreen on
+
+term xterm
+maptimeout 5
+
+
+bind ',' prev
+bind '.' next
+
+password CXB5KBxrmQXJw
+startup_message off
+setenv LC_CTYPE en_US.UTF-8
+defutf8 on
+setenv DISPLAY ':0'
+bind = resize =
+bind + resize +1
+bind - resize -1
+bind _ resize max
+verbose on
+nethack on
+#caption always "%?%{ Wk}%-Lw%?%{Rk}%n*%f %t%?(%u)%?%?%{Wk}%+Lw%? %{Rk}%=%c %{rk}%d/%M/%Y"
+#sorendition 00 07
+caption splitonly "%L= %?%{ Wk}%-Lw%45>%?%{Rk}%n*%f %t%?(%u)%?%?%{Wk}%+Lw%? %-25=%{Rk}%=%C%a %{rk}%d/%M/%Y"
+hardstatus on
+#hardstatus alwayslastline "%{+b Rk}(%{-b g}$LOGNAME@%H%{+b R}) (%{-b g}%C %a%{+b R}) %{-b g} %n %t %h"
+#hardstatus alwayslastline "%{= kG}[ %{R}%H %{G}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r}) %{kW} %2 %-= %{G}][%{kB}%Y-%m-%d %{W}%c %{G}]"
+hardstatus alwayslastline "%{= kR}[ %{G}%H %{R}] %L= %{W}%?%-Lw%{= GW}%{R}%45L>(%{B}%n*%t%?%{R})%{kW}%?%+Lw %= %{kW} %-48=%l %{kY} %-25=%C:%s%a EST %{+b kW}%{kB}%m.%d.%Y"
+#hardstatus alwayslastline "%{+b kr}[ %H ] (%n - %t) %{kw} Load: %l | Free Mem: %1`MB %-=  %{kb} %c:%s  %m.%d.%Y "
+#hardstatus alwayslastline "%-w %{+r} %n %t %{-} %+w %4`"
+
+#Preset registers for useful stuff. Use :process <register key> to use!
+
+#This is an (Oracle) SQL query that will return info about the current tablespaces, their size, and how much free space is left.
+register 1 'SELECT /* + RULE */  df.tablespace_name "Tablespace", df.bytes / (1024 * 1024) "Size (MB)", SUM(fs.bytes) / (1024 * 1024) "Free (MB)", Nvl(Round(SUM(fs.bytes) * 100 / df.bytes),1) "% Free", Round((df.bytes - SUM(fs.bytes)) * 100 / df.bytes) "% Used" FROM dba_free_space fs, (SELECT tablespace_name,SUM(bytes) bytes FROM dba_data_files GROUP BY tablespace_name) df WHERE fs.tablespace_name (+)  = df.tablespace_name GROUP BY df.tablespace_name,df.bytes UNION ALL SELECT /* + RULE */ df.tablespace_name tspace, fs.bytes / (1024 * 1024), SUM(df.bytes_free) / (1024 * 1024), Nvl(Round((SUM(fs.bytes) - df.bytes_used) * 100 / fs.bytes), 1), Round((SUM(fs.bytes) - df.bytes_free) * 100 / fs.bytes) FROM dba_temp_files fs, (SELECT tablespace_name,bytes_free,bytes_used FROM v$temp_space_header GROUP BY tablespace_name,bytes_free,bytes_used) df WHERE fs.tablespace_name (+)  = df.tablespace_name GROUP BY df.tablespace_name,fs.bytes,df.bytes_free,df.bytes_used ORDER BY 4 DESC;'
+
+#This shows the location and name of current tablespaces
+register 2 'select file_name,tablespace_name from dba_data_files;'

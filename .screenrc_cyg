@@ -1,0 +1,33 @@
+shell $HOME/.bashrc_sc.sh
+screen -t bash1
+screen -t bash2
+screen -t bash3
+screen -t bash4
+screen -t bash5
+select 0
+altscreen on
+
+term xterm
+maptimeout 5
+
+
+bind ',' prev
+bind '.' next
+
+password CXB5KBxrmQXJw
+startup_message off
+setenv LC_CTYPE en_US.UTF-8
+defutf8 on
+setenv DISPLAY ':0'
+bind = resize =
+bind + resize +1
+bind - resize -1
+bind _ resize max
+verbose on
+nethack on
+#sorendition 00 07
+caption splitonly "%L= %?%{ Wk}%-Lw%45>%?%{Rk}%n*%f %t%?(%u)%?%?%{Wk}%+Lw%? %-25=%{Rk}%=%C%a %{rk}%d/%M/%Y"
+hardstatus on
+hardstatus alwayslastline "%{= kR}[ %{G}%H %{R}] %L= %{W}%?%-Lw%{= GW}%{R}%45L>(%{B}%n*%t%?%{R})%{kW}%?%+Lw %= %{kW} %{kY} %-25=%C:%s%a EST %{+b kW}%{kB}%m.%d.%Y"
+#hardstatus alwayslastline "%{+b Rk}(%{-b g}$LOGNAME@%H%{+b R}) (%{-b g}%C %a%{+b R}) %{-b g} %n %t %h"
+#hardstatus alwayslastline "%-w %{+r} %n %t %{-} %+w %5`"

@@ -1,0 +1,95 @@
+:syntax on
+set smd ar si et bg=dark ts=4 sw=4 
+
+
+"""""""""""""""""""""""""""""
+" => The Basics
+"""""""""""""""""""""""""""""
+"Insert datestamp!
+:nnoremap <F5> "=strftime("%c")<CR>P
+:inoremap <F5> <C-R>=strftime("%c")<CR>
+
+
+"Turn on line numbers:
+"set number
+" Toggle line numbers and fold column for easy copying:
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+filetype plugin indent off
+autocmd FileType python set complete+=k~/.vim/syntax/python.vim isk+=.,(
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Return to last edit position (You want this!) *N*
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+""""""""""""""""""""""""""""""
+" => Statusline
+""""""""""""""""""""""""""""""
+" Always hide the statusline
+set laststatus=2
+
+"Git branch
+function! GitBranch()
+    let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+    if branch != ''
+        return '   Git Branch: ' . substitute(branch, '\n', '', 'g')
+    en
+    return ''
+endfunction
+
+function! CurDir()
+    return substitute(getcwd(), '/Users/amir/', "~/", "g")
+endfunction
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
+
+" Format the statusline
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L%{GitBranch()}
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ CWD:\ %r%{CurDir()}%h\ \ Line:\ %l/%L
+" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+"Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+set backspace=indent,eol,start
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" => Insert modeline
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+" Use <leader>ml to append.
+
+function! AppendModeline()
+    let l:modeline = printf("# vim:smd:ar:si:et:bg=dark:ts=%d:sw=%d ",
+          \ &tabstop, &shiftwidth)
+    let l:modeline = substitute(l:modeline, "%s", l:modeline, "")
+    let l:line = line (".")
+    call append(l:line - 1, l:modeline)
+
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
