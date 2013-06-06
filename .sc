@@ -1,10 +1,10 @@
 ########################################################
 # vim:smd:ar:si:et:bg=dark:ts=4:sw=4
 # file: .sc
-# author: Chris Olin - http://github.com/BinaryMn/.sc/raw/master
+# author: Chris Olin - http://chrisolin.com
 # purpose: portable profile for myself
 # created date: 09-18-2012
-# last modified: Thu 06 Jun 2013 04:48:39 PM EDT
+# last modified: Thu 06 Jun 2013 05:18:36 PM EDT
 # license:
 ########################################################
 
