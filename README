@@ -1,3 +1,3 @@
 This is a portable and modular UNIX profile for myself.
 
-To use, download/wget .sc and source it. From there, it'll download various rc files (bash, screen, and vim) and create some aliases so I can run everything without replacing any exisiting files.
+To use, download/wget .sc (http://github.com/BinaryMn/.sc/raw/master/.sc) and source it. From there, it'll download various rc files (bash, screen, and vim) and create some aliases so I can run everything without replacing any exisiting files.
