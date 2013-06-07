@@ -4,9 +4,11 @@
 # author: Chris Olin - http://chrisolin.com
 # purpose: portable profile for myself
 # created date: 09-18-2012
-# last modified: Thu 06 Jun 2013 05:18:36 PM EDT
+# last modified: Fri, Jun 07, 2013 11:32:20 AM
 # license:
 ########################################################
+
+#!/bin/bash
 
 ### Set environment variables
 echo "Setting environment variables"
