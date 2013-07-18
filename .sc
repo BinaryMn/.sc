@@ -4,7 +4,7 @@
 # author: Chris Olin - http://chrisolin.com
 # purpose: portable profile for myself
 # created date: 09-18-2012
-# last modified: Fri, Jun 07, 2013 11:32:20 AM
+# last modified: Thu, Jul 18, 2013  8:59:43 AM
 # license:
 ########################################################
 
@@ -24,13 +24,13 @@ if [ -f ~/.vimrc_sc ]; then
 fi
 
 if [ "$OS" = "Linux" ]; then
-    wget -q "http://github.com/BinaryMn/.sc/raw/master/.vimrc_sc" -O ~/.vimrc_sc
+    wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.vimrc_sc" -O ~/.vimrc_sc
     else
         if [ "$OS" = 'CYGWIN_NT-5.1' ] || [ "$OS" = 'Windows_NT' ]; then #updated to work in any (*coughbashandzshsneeze*) posix-compliant shell -- http://tiny.cc/0bq8ww
-            wget -q "http://github.com/BinaryMn/.sc/raw/master/.vimrc_cyg" -O ~/.vimrc_sc
+            wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.vimrc_cyg" -O ~/.vimrc_sc
             else
                 OSUNKNOWN=true
-                wget -q "http://github.com/BinaryMn/.sc/raw/master/.vimrc_sc" -O ~/.vimrc_sc
+                wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.vimrc_sc" -O ~/.vimrc_sc
          fi
 fi
 
@@ -39,13 +39,13 @@ if [ -f ~/.screenrc_sc ]; then
     mv -f ~/.screenrc_sc ~/.screenrc.old
 fi
 if [ "$OS" = "Linux" ]; then
-    wget -q "http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
+    wget -q --no-check-certificate"http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
     else
         if [ "$OS" = "CYGWIN_NT-5.1" ]; then
-            wget -q "http://github.com/BinaryMn/.sc/raw/master/.screenrc_cyg" -O ~/.screenrc_sc
+            wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.screenrc_cyg" -O ~/.screenrc_sc
             else
                 OSUNKNOWN=true
-                wget -q "http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
+                wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
          fi
 fi
 
@@ -55,12 +55,12 @@ fi
 if [ -f ~/.bash_alias_sc ]; then
     mv -f ~/.bash_alias_sc ~/.bash_alias_sc.old
 fi
-    
+
 if [ "$OS" = "Linux" ]; then
-    wget -q "http://github.com/BinaryMn/.sc/raw/master/.bash_alias_sc" -O ~/.bash_alias_sc
+    wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bash_alias_sc" -O ~/.bash_alias_sc
     else
         if [ "$OS" = 'CYGWIN_NT-5.1' ] || [ "$OS" = 'Windows_NT' ]; then #updated to work in any (*coughbashandzshsneeze*) posix-compliant shell -- http://tiny.cc/0bq8ww
-            wget -q "http://github.com/BinaryMn/.sc/raw/master/.bash_alias_cyg" -O ~/.bash_alias_sc
+            wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bash_alias_cyg" -O ~/.bash_alias_sc
             else
                 OSUNKNOWN=true
                 wget -q "http://github.com/BinaryMn/.sc/raw/master/.bash_alias_sc" -O ~/.bash_alias_sc
@@ -73,13 +73,13 @@ if [ -f ~/.bashrc_sc ]; then
 fi
     
 if [ "$OS" = "Linux" ]; then
-    wget -q "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc" -O ~/.bashrc_sc
+    wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc" -O ~/.bashrc_sc
     else
         if [ "$OS" = 'CYGWIN_NT-5.1' ] || [ "$OS" = 'Windows_NT' ]; then #updated to work in any (*coughbashandzshsneeze*) posix-compliant shell -- http://tiny.cc/0bq8ww
-            wget -q "http://github.com/BinaryMn/.sc/raw/master/.bashrc_cyg" -O ~/.bashrc_sc
+            wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bashrc_cyg" -O ~/.bashrc_sc
             else
                 OSUNKNOWN=true
-                wget -q "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc" -O ~/.bashrc_sc
+                wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc" -O ~/.bashrc_sc
          fi
 fi
 
@@ -87,7 +87,7 @@ fi
 if [ -f ~/.bashrc_sc.sh ]; then
     mv -f ~/.bashrc_sc.sh ~/.bashrc_sc.sh.old
 fi    
-wget -q "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc.sh" -O ~/.bashrc_sc.sh
+wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.bashrc_sc.sh" -O ~/.bashrc_sc.sh
 chmod +x ~/.bashrc_sc.sh
 
 ### setting more variables
