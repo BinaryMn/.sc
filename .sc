@@ -4,7 +4,7 @@
 # author: Chris Olin - http://chrisolin.com
 # purpose: portable profile for myself
 # created date: 09-18-2012
-# last modified: Thu, Jul 18, 2013  8:59:43 AM
+# last modified: Thu, Jul 18, 2013  9:10:45 AM
 # license:
 ########################################################
 
@@ -39,7 +39,7 @@ if [ -f ~/.screenrc_sc ]; then
     mv -f ~/.screenrc_sc ~/.screenrc.old
 fi
 if [ "$OS" = "Linux" ]; then
-    wget -q --no-check-certificate"http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
+    wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.screenrc_sc" -O ~/.screenrc_sc
     else
         if [ "$OS" = "CYGWIN_NT-5.1" ]; then
             wget -q --no-check-certificate "http://github.com/BinaryMn/.sc/raw/master/.screenrc_cyg" -O ~/.screenrc_sc
